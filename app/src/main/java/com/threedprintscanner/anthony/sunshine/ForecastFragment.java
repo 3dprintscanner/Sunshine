@@ -5,9 +5,13 @@ package com.threedprintscanner.anthony.sunshine;
  */
 
         import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.net.Uri;
         import android.os.AsyncTask;
         import android.os.Bundle;
+        import android.preference.Preference;
+        import android.preference.PreferenceFragment;
+        import android.preference.PreferenceManager;
         import android.support.v4.app.Fragment;
         import android.util.Log;
         import android.view.LayoutInflater;
@@ -60,7 +64,9 @@ public class ForecastFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.action_refresh:
               GetWeatherInBackground weather = new GetWeatherInBackground();
-                weather.execute();
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                String location = preferences.getString(getString(R.string.location_preference_key),getString(R.string.location_preference));
+                weather.execute(location);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -110,8 +116,12 @@ public class ForecastFragment extends Fragment {
 
         @Override
         protected String[] doInBackground(String... params) {
-//            String postcode = params[0];
-              String postcode = "BS$8 2XD";
+
+                if (params.length == 0){
+                    return null;
+                }
+
+                String postcode = params[0];
                 String mode = "json";
                 String units = "metric";
                 String count = "7";

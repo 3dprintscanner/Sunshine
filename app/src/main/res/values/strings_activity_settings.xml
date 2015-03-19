@@ -5,6 +5,8 @@
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
+    <string name="location_preference">London</string>
+    <string name="location_preference_key">locationpreference</string>
 
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
     <string name="pref_description_social_recommendations">Recommendations for people to contact
