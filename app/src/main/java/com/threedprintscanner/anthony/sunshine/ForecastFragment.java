@@ -106,7 +106,6 @@ public class ForecastFragment extends Fragment {
         protected void onPostExecute(String[] strings) {
             super.onPostExecute(strings);
             if(strings != null) {
-//                ArrayAdapter mForecastAdapter = new ArrayAdapter(getActivity(), R.layout.list_item_forecast);
                 mForeCastAdapter.clear();
                 for (String dayForecastString : strings){
                     mForeCastAdapter.add(dayForecastString);
@@ -155,7 +154,6 @@ public class ForecastFragment extends Fragment {
 
                 String uri = builder.build().toString();
 
-//                URL url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&units=metric&cnt=7&q=london");
                 URL url = new URL(uri);
                 Log.v("URI",url.toString());
 

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 
@@ -32,6 +33,15 @@ public class DetailActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_detail, menu);
+
+        MenuItem item = menu.findItem(R.id.share_menu);
+
+        ShareActionProvider provider = new ShareActionProvider(this);
+        item.setActionProvider(provider);
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND).putExtra(Intent.EXTRA_TEXT,getIntent().getStringExtra(Intent.EXTRA_TEXT)+"# SunshineApp").putExtra(Intent.EXTRA_MIME_TYPES,"text/plain");
+        provider.setShareIntent(shareIntent);
+
         return true;
     }
 
@@ -64,7 +74,7 @@ public class DetailActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
             Intent intent = getActivity().getIntent();
             if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)){
-                String forecastString = Intent.EXTRA_TEXT;
+                String forecastString = intent.getStringExtra(Intent.EXTRA_TEXT);
                 ((TextView) rootView.findViewById(R.id.textView)).setText(forecastString);
             }
             return rootView;

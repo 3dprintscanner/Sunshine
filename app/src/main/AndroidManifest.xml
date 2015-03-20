@@ -34,6 +34,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.threedprintscanner.anthony.sunshine.MainActivity" />
         </activity>
+        <provider
+            android:name=".content.AssetProvider"
+            android:authorities="com.example.android.actionbarcompat.shareactionprovider"
+            android:grantUriPermissions="true"
+            android:exported="true" />
     </application>
 
 </manifest>

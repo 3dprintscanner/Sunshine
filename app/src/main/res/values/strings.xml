@@ -8,5 +8,10 @@
     <string name="smalltemp">8 \u2103</string>
     <string name="action_refresh">Refresh</string>
     <string name="title_activity_detail">Detail Activity</string>
+    <string name="temperature_title">Temperature Units</string>
+    <string name="temperature_key">Temperaturekey</string>
+    <string name="show_user_location_title">Show Location on Map</string>
+
+
 
 </resources>
